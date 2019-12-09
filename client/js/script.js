@@ -2,6 +2,7 @@ window.onload=init;
 
 let apiURL = "http://localhost:8080/api/restaurants";
 
+
 function init() {
     new Vue({
         el: "#app",
