@@ -26,9 +26,21 @@
 
         <button>Ajouter</button>
     </form>
+    <p>
+        Rechercher par nom
+        <input type="text" v-model="nomRecherche"
+        v-on:input="getDataFromServer()">
+    </p>
+    <p>
+        Nombre de restaurants par page :
+        <input type="range" min="2" max="100" value="10" 
+            v-on:input="changePagesize()"
+            v-model="pagesize"
+        > {{pagesize}}
+    </p>
 
     <h1>Nombre de restaurants : {{nbRestaurants}}</h1>
-    <button v-on:click="pagePrecedente()">Précedent</button>
+    <button v-on:click="pagePrecedente()" v-bind:disabled="page==0">Précedent</button>
     <button v-on:click="pageSuivante()">Suivant</button>
     <table>
         <tr>

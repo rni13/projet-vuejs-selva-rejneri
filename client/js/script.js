@@ -11,7 +11,9 @@ function init() {
             nbRestaurants:0,
             nom: '',
             cuisine: '',
-            page:0
+            page:0,
+            pagesize:0,
+            nomRecherche:''
         },
         mounted(){
             console.log("AVANT AFFICHAGE");
@@ -20,7 +22,7 @@ function init() {
         methods: {
             getDataFromServer(){
             // ici on fait un fetch pour récuperer des restaurants sur le serveur
-                let url = apiURL + "?page=" + this.page;
+                let url = apiURL + "?page=" + this.page + "&pagesize=" + this.pagesize;
                 fetch(url)
                 .then(reponseJSON => {
                     return reponseJSON.json();
@@ -61,6 +63,11 @@ function init() {
                 console.log("page precedente");
                 this.page--;
                 this.getDataFromServer();
+            },
+            changePagesize(){
+                console.log("Change page size" + this.pagesize);
+                this.getDataFromServer();
+
             },
         }
     })
