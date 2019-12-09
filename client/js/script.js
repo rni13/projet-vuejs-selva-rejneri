@@ -22,7 +22,7 @@ function init() {
         methods: {
             getDataFromServer(){
             // ici on fait un fetch pour récuperer des restaurants sur le serveur
-                let url = apiURL + "?page=" + this.page + "&pagesize=" + this.pagesize;
+                let url = apiURL + "?page=" + this.page + "&pagesize=" + this.pagesize + "&name=" + this.nomRecherche;
                 fetch(url)
                 .then(reponseJSON => {
                     return reponseJSON.json();
